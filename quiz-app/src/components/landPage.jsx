@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LandingPage() {
+function LandingPage({ onStart }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center p-6">
       <div className="max-w-2xl w-full text-center">
@@ -43,7 +43,11 @@ function LandingPage() {
               </p>
             </div>
           </div>
-          <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xl py-4 px-12 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200">
+          <button
+            type="button"
+            onClick={onStart}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xl py-4 px-12 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
             Start Quiz Now! 🎉
           </button>
         </div>
