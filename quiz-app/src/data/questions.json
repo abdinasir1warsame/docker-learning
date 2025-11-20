@@ -1,0 +1,515 @@
+{
+    "IntroToNetworking": [
+        {
+            "id": 1,
+            "question": "What is a computer network and why is it important for DevOps?",
+            "options": [
+                "A group of connected devices that share information and resources",
+                "A protocol for securing servers",
+                "A software framework for applications",
+                "A cloud storage service"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 2,
+            "question": "What are the two core types of networks?",
+            "options": [
+                "LAN and WAN",
+                "TCP and UDP",
+                "IPv4 and IPv6",
+                "HTTP and HTTPS"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 3,
+            "question": "What is the function of a switch in a network?",
+            "options": [
+                "Routes traffic between networks",
+                "Connects devices within a LAN and manages local data flow",
+                "Monitors and blocks traffic",
+                "Assigns IP addresses globally"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 4,
+            "question": "What is the function of a router?",
+            "options": [
+                "Connects devices within a LAN",
+                "Routes traffic between networks using IP addresses",
+                "Monitors unauthorized access",
+                "Blocks all external connections"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 5,
+            "question": "What is the function of a firewall?",
+            "options": [
+                "Manages local LAN traffic",
+                "Routes packets to the correct network",
+                "Monitors and controls traffic; protects against unauthorized access",
+                "Connects devices to the internet automatically"
+            ],
+            "correctAnswer": 2
+        }
+    ],
+    "IPandMACAddresses": [
+        {
+            "id": 6,
+            "question": "What is the difference between an IP and MAC address?",
+            "options": [
+                "IP is logical, MAC is physical",
+                "IP is physical, MAC is logical",
+                "Both are physical",
+                "Both are logical"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 7,
+            "question": "Which protocol uses 32-bit addressing?",
+            "options": [
+                "IPv4",
+                "IPv6",
+                "TCP",
+                "UDP"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 8,
+            "question": "Which protocol uses 128-bit addressing?",
+            "options": [
+                "IPv4",
+                "IPv6",
+                "MAC",
+                "ARP"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 9,
+            "question": "What is the main purpose of an IP address?",
+            "options": [
+                "Physical identification",
+                "Routing data across networks",
+                "Encrypting network traffic",
+                "Hosting a website"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 10,
+            "question": "What is the main purpose of a MAC address?",
+            "options": [
+                "Logical identifier",
+                "Routes traffic between networks",
+                "Physical unique identifier for devices on LAN",
+                "Blocks unauthorized access"
+            ],
+            "correctAnswer": 2
+        }
+    ],
+    "PortsAndProtocols": [
+        {
+            "id": 11,
+            "question": "What is a port in networking?",
+            "options": [
+                "Physical connector on a switch",
+                "Logical endpoint directing data to the correct application",
+                "IP address of a device",
+                "Firewall rule"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 12,
+            "question": "What is a protocol in networking?",
+            "options": [
+                "A rule for formatting and transmitting data",
+                "Physical network cable",
+                "IP address",
+                "Encryption key"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 13,
+            "question": "What is the difference between TCP and UDP?",
+            "options": [
+                "TCP is connection-oriented and reliable; UDP is connectionless and faster",
+                "TCP is faster; UDP is more secure",
+                "TCP is for LAN; UDP is for WAN",
+                "TCP encrypts traffic; UDP does not"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 14,
+            "question": "Which port is commonly used for HTTP traffic?",
+            "options": [
+                "80",
+                "443",
+                "22",
+                "53"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 15,
+            "question": "Which port is commonly used for HTTPS traffic?",
+            "options": [
+                "80",
+                "443",
+                "22",
+                "53"
+            ],
+            "correctAnswer": 1
+        }
+    ],
+    "OSIModel": [
+        {
+            "id": 16,
+            "question": "How many layers are in the OSI model?",
+            "options": [
+                "5",
+                "7",
+                "4",
+                "6"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 17,
+            "question": "Which layer of OSI manages end-to-end communication and reliability?",
+            "options": [
+                "Network",
+                "Transport",
+                "Session",
+                "Application"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 18,
+            "question": "Which OSI layer is responsible for routing?",
+            "options": [
+                "Network",
+                "Data Link",
+                "Transport",
+                "Session"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 19,
+            "question": "Which OSI layer provides services to user applications?",
+            "options": [
+                "Presentation",
+                "Application",
+                "Session",
+                "Transport"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 20,
+            "question": "How does data flow through OSI layers on the sending side?",
+            "options": [
+                "Physical → Data Link → Network → Transport → Session → Presentation → Application",
+                "Application → Presentation → Session → Transport → Network → Data Link → Physical",
+                "Network → Transport → Session → Presentation → Application → Data Link → Physical",
+                "Transport → Network → Data Link → Physical → Application → Presentation → Session"
+            ],
+            "correctAnswer": 1
+        }
+    ],
+    "DNS": [
+        {
+            "id": 21,
+            "question": "What is DNS?",
+            "options": [
+                "Translates domain names to IP addresses",
+                "Routes data between networks",
+                "Blocks unauthorized access",
+                "Encrypts network traffic"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 22,
+            "question": "Which server holds actual DNS records?",
+            "options": [
+                "Recursive server",
+                "Authoritative server",
+                "Root server",
+                "TLD server"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 23,
+            "question": "What is a zone file in DNS?",
+            "options": [
+                "Stores IP addresses of clients",
+                "Stores a domain’s DNS records on a name server",
+                "Manages routers",
+                "Contains firewall rules"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 24,
+            "question": "Which DNS record type maps a domain to an IPv4 address?",
+            "options": [
+                "AAAA",
+                "A",
+                "CNAME",
+                "MX"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 25,
+            "question": "Which file can be used for local DNS overrides on Linux?",
+            "options": [
+                "/etc/resolv.conf",
+                "/etc/network/interfaces",
+                "/etc/hosts",
+                "/etc/dns.conf"
+            ],
+            "correctAnswer": 2
+        }
+    ],
+    "Routing": [
+        {
+            "id": 26,
+            "question": "What is routing?",
+            "options": [
+                "Connecting devices within a LAN",
+                "Determining the best path for data across networks",
+                "Encrypting network traffic",
+                "Assigning IP addresses dynamically"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 27,
+            "question": "What is a routing table?",
+            "options": [
+                "A table mapping IP addresses to MAC addresses",
+                "A map inside a router showing the best path for data",
+                "A DNS record table",
+                "A firewall configuration table"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 28,
+            "question": "What is a hop in networking?",
+            "options": [
+                "A single step from one router/server to another",
+                "A broadcast message",
+                "A firewall rule",
+                "A type of IP address"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 29,
+            "question": "What happens if a router has no route for a packet?",
+            "options": [
+                "The packet is rerouted automatically",
+                "Data cannot be delivered and is lost",
+                "The router assigns a new IP",
+                "The firewall blocks all packets"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 30,
+            "question": "What is the difference between static and dynamic routing?",
+            "options": [
+                "Static is manually configured; dynamic adapts automatically",
+                "Dynamic is manually configured; static adapts automatically",
+                "Static is faster than dynamic",
+                "Dynamic cannot handle large networks"
+            ],
+            "correctAnswer": 0
+        }
+    ],
+    "RoutingProtocols": [
+        {
+            "id": 31,
+            "question": "What is a routing protocol?",
+            "options": [
+                "Manually configured routing table",
+                "A protocol that automatically finds the best path for data",
+                "A firewall rule set",
+                "A DNS service"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 32,
+            "question": "Which routing protocol is used for intra-domain routing?",
+            "options": [
+                "BGP",
+                "OSPF",
+                "TCP",
+                "UDP"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "id": 33,
+            "question": "Which routing protocol is used for inter-domain routing?",
+            "options": [
+                "BGP",
+                "OSPF",
+                "ICMP",
+                "DNS"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 34,
+            "question": "How do routing protocols improve performance?",
+            "options": [
+                "Optimize paths and reduce congestion dynamically",
+                "Manually assign IP addresses",
+                "Encrypt network traffic",
+                "Filter DNS queries"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 35,
+            "question": "Which routing protocol uses link-state information?",
+            "options": [
+                "BGP",
+                "OSPF",
+                "RIP",
+                "Static routing"
+            ],
+            "correctAnswer": 1
+        }
+    ],
+    "Subnetting": [
+        {
+            "id": 36,
+            "question": "What is a subnet and why do we use subnetting?",
+            "options": [
+                "Smaller logical network to reduce broadcast traffic and improve performance",
+                "A firewall rule set",
+                "A type of DNS record",
+                "A type of IP address"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 37,
+            "question": "What does a subnet mask do?",
+            "options": [
+                "Separates network and host bits in an IP address",
+                "Encrypts IP packets",
+                "Assigns MAC addresses",
+                "Routes packets between networks"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 38,
+            "question": "How do you calculate the number of hosts in a subnet?",
+            "options": [
+                "2^(number of host bits) − 2",
+                "2^(number of network bits) − 2",
+                "2^(number of host bits)",
+                "2^(number of network bits)"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 39,
+            "question": "What is the usable IP range for 192.168.1.0/26?",
+            "options": [
+                "192.168.1.1 – 192.168.1.62",
+                "192.168.1.0 – 192.168.1.63",
+                "192.168.1.0 – 192.168.1.62",
+                "192.168.1.1 – 192.168.1.63"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 40,
+            "question": "Why do businesses subnet networks?",
+            "options": [
+                "To reduce large broadcast domains and improve performance and security",
+                "To encrypt all traffic",
+                "To increase WAN speed",
+                "To assign dynamic IP addresses"
+            ],
+            "correctAnswer": 0
+        }
+    ],
+    "Troubleshooting": [
+        {
+            "id": 41,
+            "question": "What are the most common network issues?",
+            "options": [
+                "IP issues, DNS failure, connectivity loss, slow network, misconfigured hardware",
+                "Only DNS failure",
+                "Only slow internet speed",
+                "Only firewall issues"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 42,
+            "question": "What is the first step in troubleshooting?",
+            "options": [
+                "Observe and identify the issue, collect basic info",
+                "Jump straight to advanced commands",
+                "Restart all devices",
+                "Flush DNS cache"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 43,
+            "question": "How do you test basic connectivity?",
+            "options": [
+                "ping 8.8.8.8",
+                "nslookup google.com",
+                "traceroute google.com",
+                "ip addr"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 44,
+            "question": "How do you test DNS resolution?",
+            "options": [
+                "ping google.com and see if the domain resolves",
+                "ping 8.8.8.8",
+                "ifconfig",
+                "traceroute"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "id": 45,
+            "question": "What command shows the path your packets take?",
+            "options": [
+                "traceroute",
+                "ping",
+                "netstat",
+                "ip addr"
+            ],
+            "correctAnswer": 0
+        }
+    ]
+}

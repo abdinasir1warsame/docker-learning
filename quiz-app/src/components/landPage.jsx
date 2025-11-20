@@ -19,8 +19,8 @@ function LandingPage({ onStart }) {
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               Dive into an exciting quiz that challenges your networking
-              knowledge! Test your skills across various topics and see how you
-              stack up against the best in the field.
+              knowledge! Test your skills across various topics and see how much
+              you’ve learned.
             </p>
           </div>
           <div className="grid grid-cols-3 gap-4 mb-8">
