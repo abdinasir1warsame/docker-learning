@@ -1,59 +1,26 @@
-import React, { useMemo, useState } from 'react';
-import questionsData from '../data/questions.json';
-
-// Fisher-Yates shuffle (returns new array)
-function shuffleArray(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function pickRandomN(arr, n) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a.slice(0, Math.min(n, a.length));
-}
-
-function flattenQuestionsByTopic(data, perTopic = 2) {
-  return Object.values(data).flatMap((topicArr) =>
-    pickRandomN(topicArr, perTopic)
-  );
-}
+import React, { useState, useEffect } from 'react';
 
 function QuestionsPage() {
-  // Prepare questions once and shuffle options so correct answers land at mixed indices
-  const questions = useMemo(() => {
-    // pick two random questions from each topic/category
-    const flat = flattenQuestionsByTopic(questionsData, 2);
-    return flat.map((q) => {
-      const originalOptions = q.options.slice();
-      const correctOption = originalOptions[q.correctAnswer];
-      const shuffled = shuffleArray(originalOptions);
-      const newCorrectIndex = shuffled.findIndex((o) => o === correctOption);
-      return {
-        ...q,
-        options: shuffled,
-        correctAnswer: newCorrectIndex,
-      };
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  const [questions, setQuestions] = useState([]);
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
+  // Fetch questions from backend
+  useEffect(() => {
+    fetch('http://localhost:5000/api/questions')
+      .then((res) => res.json())
+      .then((data) => setQuestions(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  if (!questions.length) return <div>Loading...</div>;
+
   const current = questions[idx];
 
   function handleSelect(i) {
-    if (selected !== null) return; // prevent re-select
+    if (selected !== null) return;
     setSelected(i);
     if (i === current.correctAnswer) setScore((s) => s + 1);
   }
@@ -133,6 +100,7 @@ function QuestionsPage() {
               />
             </div>
           </div>
+
           <div className="p-8">
             <div className="mb-8">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
@@ -145,7 +113,7 @@ function QuestionsPage() {
               {current.options.map((opt, i) => {
                 const isSelected = selected === i;
                 const isCorrect = current.correctAnswer === i;
-                const base =
+                let base =
                   'w-full text-left p-5 rounded-2xl border-2 transition-all duration-200 flex items-center';
                 let extra =
                   'border-gray-200 hover:border-blue-500 hover:bg-blue-50';
@@ -155,7 +123,6 @@ function QuestionsPage() {
                     extra = 'border-red-400 bg-red-50';
                   else extra = 'border-gray-200 bg-white';
                 }
-
                 return (
                   <button
                     key={i}
@@ -203,6 +170,7 @@ function QuestionsPage() {
             </div>
           </div>
         </div>
+
         <div className="mt-6 text-center">
           <button
             onClick={() => setFinished(true)}
