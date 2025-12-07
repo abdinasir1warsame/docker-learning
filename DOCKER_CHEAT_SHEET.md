@@ -1,191 +1,102 @@
-# Docker & Docker Compose Cheat Sheet
+# Docker Networking & Registry Cheat Sheet
 
-## 1. Docker Basics
+## Dockerfile & Docker Compose Blueprint
 
-### Images
-
-* Build an image from Dockerfile:
+**Dockerfile (example)**
 
 ```
-docker build -t <image_name>:<tag> .
-```
-
-* List local images:
-
-```
-docker images
-```
-
-* Remove an image:
-
-```
-docker rmi <image_name_or_id>
-```
-
-### Containers
-
-* Run a container:
-
-```
-docker run -p <host_port>:<container_port> <image_name>
-```
-
-* Run container in detached mode:
-
-```
-docker run -d -p <host_port>:<container_port> <image_name>
-```
-
-* List running containers:
-
-```
-docker ps
-```
-
-* List all containers:
-
-```
-docker ps -a
-```
-
-* Stop a container:
-
-```
-docker stop <container_id_or_name>
-```
-
-* Remove a container:
-
-```
-docker rm <container_id_or_name>
-```
-
-* View container logs:
-
-```
-docker logs <container_id_or_name>
-```
-
-* Execute a shell inside container:
-
-```
-docker exec -it <container_id_or_name> sh
-# or bash if available
-docker exec -it <container_id_or_name> bash
-```
-
-### Dockerfile Essentials
-
-* **Basic Node backend**
-
-```
-FROM node:18
+FROM node:20-alpine
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 5000
-CMD ["node", "index.js"]
-```
-
-* **React frontend with Nginx**
-
-```
-# Stage 1: Build
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
+COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
-
-# Stage 2: Serve
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
 ```
 
-## 2. Docker Compose Basics
-
-### docker-compose.yml Example
+**Docker Compose (example)**
 
 ```
-version: '3.9'
-
 services:
   frontend:
-    build: ./frontend
+    build: ./frontend   # or use image: <registry>/<image>:<tag>
     ports:
-      - "3000:3000"
+      - '3000:80'
     volumes:
       - ./frontend:/app
     depends_on:
       - backend
 
   backend:
-    build: ./backend
+    build: ./backend    # or use image: <registry>/<image>:<tag>
     ports:
-      - "5000:5000"
+      - '5000:5000'
     volumes:
       - ./backend:/app
     environment:
       - PORT=5000
 ```
 
-### Common Commands
+## Essential Commands
 
-* Build and start all services:
-
-```
-docker-compose up --build
-```
-
-* Start in detached mode:
+**Docker Basics**
 
 ```
-docker-compose up -d
+docker build -t <username>/<image>:<tag> <path>
+docker run -p <host_port>:<container_port> <image>:<tag>
+docker images
+docker ps -a
+docker stop <container_id>
+docker rm <container_id>
 ```
 
-* Stop all services:
+**Docker Compose**
 
 ```
-docker-compose down
+docker compose up -d --build
+docker compose up -d
+docker compose down
+docker compose logs -f
 ```
 
-* Rebuild a service:
+## Pushing to a Registry
+
+**Docker Hub**
 
 ```
-docker-compose build <service_name>
+docker login
+docker tag <image>:<tag> <username>/<image>:<tag>
+docker push <username>/<image>:<tag>
+docker pull <username>/<image>:<tag>
 ```
 
-* View logs:
+**AWS ECR**
 
 ```
-docker-compose logs
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com
+docker tag <image>:<tag> <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo>:<tag>
+docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo>:<tag>
+docker pull <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo>:<tag>
 ```
 
-* Follow logs:
+## Docker Networks
 
 ```
-docker-compose logs -f
+docker network create <network_name>
+docker run --network <network_name> -p <host_port>:<container_port> <image>
+docker network inspect <network_name>
+docker network rm <network_name>
 ```
 
-* Run a one-time command in a service:
+- Docker Compose automatically handles networks; containers can communicate via service names.
+
+## Using Registry Images in Docker Compose
 
 ```
-docker-compose run <service_name> <command>
+frontend: image: <username>/<image>:<tag>, ports: 3000:80, depends_on: backend
+backend: image: <username>/<image>:<tag>, ports: 5000:5000
 ```
 
-* Execute shell inside a service container:
-
-```
-docker-compose exec <service_name> sh
-```
-
-### Tips
-
-* Expose only necessary ports.
-* Use **volumes** to sync code during development.
-* Use **multi-stage builds** for frontends to keep images small.
-* `depends_on` ensures order but doesn’t guarantee readiness; consider wait scripts for databases or APIs.
+- Pull images directly from registry; no local build required
+- Ensure depends_on and service names match your app configuration
